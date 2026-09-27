@@ -1,0 +1,95 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Gedung Perkantoran A",
+                "floors": 5,
+                "color": "#4a90d9"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [106.82650, -6.17480],
+                    [106.82700, -6.17480],
+                    [106.82700, -6.17520],
+                    [106.82650, -6.17520],
+                    [106.82650, -6.17480]
+                ]]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Apartemen Tinggi",
+                "floors": 15,
+                "color": "#e74c3c"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [106.82750, -6.17450],
+                    [106.82800, -6.17450],
+                    [106.82800, -6.17500],
+                    [106.82750, -6.17500],
+                    [106.82750, -6.17450]
+                ]]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Ruko 2 Lantai",
+                "floors": 2,
+                "color": "#2ecc71"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [106.82820, -6.17550],
+                    [106.82860, -6.17550],
+                    [106.82860, -6.17580],
+                    [106.82820, -6.17580],
+                    [106.82820, -6.17550]
+                ]]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Mall Besar",
+                "floors": 8,
+                "color": "#f39c12"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [106.82550, -6.17600],
+                    [106.82680, -6.17600],
+                    [106.82680, -6.17700],
+                    [106.82550, -6.17700],
+                    [106.82550, -6.17600]
+                ]]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Rumah Tinggal",
+                "floors": 1,
+                "color": "#9b59b6"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [106.82900, -6.17600],
+                    [106.82940, -6.17600],
+                    [106.82940, -6.17630],
+                    [106.82900, -6.17630],
+                    [106.82900, -6.17600]
+                ]]
+            }
+        }
+    ]
+}
