@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGIS - Peta Interaktif 3D</title>
+
+    <!-- MapLibre GL JS -->
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+
+    <!-- Shim: MapboxDraw expects mapboxgl on global scope -->
+    <script>
+        if (typeof mapboxgl === 'undefined' && typeof maplibregl !== 'undefined') {
+            window.mapboxgl = maplibregl;
+        }
+    </script>
+
+    <!-- Mapbox GL Draw (compatible with MapLibre via shim) -->
+    <link rel="stylesheet" href="https://unpkg.com/@mapbox/mapbox-gl-draw@1.4.3/dist/mapbox-gl-draw.css">
+    <script src="https://unpkg.com/@mapbox/mapbox-gl-draw@1.4.3/dist/mapbox-gl-draw.js"></script>
+
+    <!-- Turf.js — geospatial analysis -->
+    <script src="https://unpkg.com/@turf/turf@7/turf.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Kadaster 3D</h2>
+            <button id="sidebar-toggle" class="sidebar-toggle" title="Toggle Sidebar">☰</button>
+        </div>
+
+        <!-- Search -->
+        <div class="panel">
+            <h3>🔍 Cari Lokasi</h3>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Ketik nama lokasi...">
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Drawing Tools -->
+        <!-- Measurement -->
+        <div class="panel">
+            <h3>📐 Pengukuran</h3>
+            <div class="tool-buttons">
+                <button id="measure-distance" class="tool-btn">📏 Ukur Jarak</button>
+                <button id="measure-area" class="tool-btn">📐 Ukur Luas</button>
+                <button id="measure-clear" class="tool-btn tool-btn-danger">✖ Hapus Ukuran</button>
+            </div>
+            <div id="measure-result" class="measure-result"></div>
+        </div>
+
+        <!-- Upload GeoJSON -->
+        <div class="panel">
+            <h3>📂 Upload GeoJSON</h3>
+            <div class="upload-area" id="upload-area">
+                <p>Drag & drop file GeoJSON</p>
+                <p style="color:#999; font-size:12px;">atau</p>
+                <input type="file" id="file-input" accept=".geojson,.json" style="display:none">
+                <button id="upload-btn" class="tool-btn">📁 Pilih File</button>
+            </div>
+            <div id="upload-info" class="upload-info"></div>
+        </div>
+
+        <!-- Layer Control -->
+        <div class="panel">
+            <div id="layer-list" class="layer-list"></div>
+        </div>
+    </div>
+
+    <!-- ===== MAP ===== -->
+    <div id="map"></div>
+
+    <!-- ===== BUILDING FORM MODAL ===== -->
+    <div id="building-modal" class="modal" style="display:none">
+        <div class="modal-content">
+            <h3>🏢 Properti Bangunan</h3>
+            <div class="form-group">
+                <label for="building-name">Nama Bangunan:</label>
+                <input type="text" id="building-name" placeholder="Contoh: Gedung Rektorat">
+            </div>
+            <div class="form-group">
+                <label for="building-nib">NIB (Nomor Induk Bangunan):</label>
+                <input type="text" id="building-nib" placeholder="Contoh: 1234567890" 
+                       pattern="[0-9]*" inputmode="numeric">
+            </div>
+            <div class="form-group">
+                <label for="building-floors">Jumlah Lantai:</label>
+                <input type="number" id="building-floors" min="1" max="100" value="1">
+            </div>
+            <div class="form-group">
+                <label for="building-color">Warna Bangunan:</label>
+                <input type="color" id="building-color" value="#4a90d9">
+            </div>
+            <div class="form-info">
+                Tinggi = <span id="height-preview">3</span> meter
+                (<span id="floor-preview">1</span> lantai × 3 m)
+            </div>
+            <div class="modal-buttons">
+                <button id="building-save" class="btn btn-primary">💾 Simpan</button>
+                <button id="building-cancel" class="btn btn-secondary">❌ Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS (order matters) ===== -->
+    <script src="js/app.js"></script>
+    <script src="js/layers.js"></script>
+    <script src="js/draw.js"></script>
+    <script src="js/building3d.js"></script>
+    <script src="js/measure.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/upload.js"></script>
+
+</body>
+</html>
